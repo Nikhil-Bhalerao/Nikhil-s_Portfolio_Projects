@@ -1,5 +1,5 @@
 # Retail Sales Analysis Project
-#### Visualization -> https://public.tableau.com/views/RetailStoreSales_16995367016630/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link
+##### Visualization -> https://public.tableau.com/views/RetailStoreSales_16995367016630/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link
 
 # Overview
 This data analysis project delves into a comprehensive exploration of a retail dataset, aiming to unveil insights that drive strategic decision-making. The dataset encompasses transaction details, product information, customer profiles, and promotional data.
@@ -85,3 +85,8 @@ Insights: Uncover anomalies impacting overall analysis and decision-making.
 
 # Conclusion
 This retail sales analysis project offers valuable insights for strategic decision-making, covering diverse aspects of retail operations. The findings provide actionable information to optimize sales strategies, enhance customer experiences, and improve overall business performance.
+
+
+#### Acknowledgement
+Data Used For This Project Is Available On Kaggle.com
+Credit For Data Set -> https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset
