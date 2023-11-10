@@ -1,4 +1,6 @@
 # Retail Sales Analysis Project
+#### Visualization -> https://public.tableau.com/views/RetailStoreSales_16995367016630/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link
+
 # Overview
 This data analysis project delves into a comprehensive exploration of a retail dataset, aiming to unveil insights that drive strategic decision-making. The dataset encompasses transaction details, product information, customer profiles, and promotional data.
 
