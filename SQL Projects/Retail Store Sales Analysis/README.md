@@ -3,7 +3,7 @@
 This data analysis project delves into a comprehensive exploration of a retail dataset, aiming to unveil insights that drive strategic decision-making. The dataset encompasses transaction details, product information, customer profiles, and promotional data.
 
 # Objectives
-Overall Sales Analysis:
+## Overall Sales Analysis:
 
 Objective: Retrieve total sales, transaction count, and average transaction cost for the entire dataset.
 
