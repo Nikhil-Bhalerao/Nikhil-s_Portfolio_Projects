@@ -8,77 +8,80 @@ Overall Sales Analysis:
 Objective: Retrieve total sales, transaction count, and average transaction cost for the entire dataset.
 
 Findings: Provide a holistic view of retail performance.
-Monthly Sales Trend:
+
+## Monthly Sales Trend:
 
 Objective: Calculate monthly sales totals, identifying trends or patterns.
 
 Findings: Uncover seasonality or evolving sales behavior over time.
-Top Selling Products:
+
+## Top Selling Products:
 
 Objective: Identify top-selling products based on the total quantity sold.
 
 Findings: Discern key revenue generators and popular products.
-Payment Method Distribution:
+
+## Payment Method Distribution:
 
 Objective: Break down payment methods, including count and percentage of transactions.
 
 Findings: Understand preferred payment methods and areas for improvement.
-Store Type Performance:
+
+## Store Type Performance:
 
 Objective: Analyze sales performance across different store types.
 
 Findings: Identify high-performing stores and areas for optimization.
-Findings
 
-Discount Impact:
+## Discount Impact:
 
 Objective: Assess the impact of discounts on total revenue.
 
 Insights: Understand the effectiveness of discount strategies.
 
-Customer Category Analysis:
+## Customer Category Analysis:
 
 Objective: Group customers by category, analyzing purchasing behavior.
 
 Insights: Tailor marketing strategies to specific customer categories.
 
-Seasonal Sales Variation:
+## Seasonal Sales Variation:
 
 Objective: Examine seasonal variation in sales.
 
 Insights: Adapt inventory and marketing strategies based on seasonal trends.
 
-Promotion Effectiveness:
+## Promotion Effectiveness:
 
 Objective: Evaluate the effectiveness of promotions.
 
 Insights: Optimize promotional efforts for maximum impact.
 
-City-wise Sales Comparison:
+## City-wise Sales Comparison:
 
 Objective: Compare total sales and average transaction costs across cities.
 
 Insights: Target marketing efforts based on regional sales performance.
 
-Customer-wise Transaction History:
+## Customer-wise Transaction History:
 
 Objective: Retrieve transaction history for a specific customer.
 
 Insights: Provide personalized insights into individual customer behavior.
 
-High-Value Customer Identification:
+## High-Value Customer Identification:
 
 Objective: Identify high-value customers based on total spending.
 
 Insights: Target high-value customers for loyalty programs and personalized promotions.
 
-Average Discount Percentage:
+## Average Discount Percentage:
 
 Objective: Calculate the average percentage of discounts applied.
 
 Insights: Optimize discount strategies based on product performance.
 
-Analysis of Outliers:
+## Analysis of Outliers:
 
 Objective: Identify and analyze outliers in the dataset.
 
