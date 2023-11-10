@@ -75,12 +75,6 @@ Objective: Identify high-value customers based on total spending.
 
 Insights: Target high-value customers for loyalty programs and personalized promotions.
 
-## Average Discount Percentage:
-
-Objective: Calculate the average percentage of discounts applied.
-
-Insights: Optimize discount strategies based on product performance.
-
 ## Analysis of Outliers:
 
 Objective: Identify and analyze outliers in the dataset.
