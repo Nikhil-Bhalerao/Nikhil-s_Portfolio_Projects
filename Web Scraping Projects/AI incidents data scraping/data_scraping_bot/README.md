@@ -19,9 +19,6 @@ Ensure UIPath is installed on your system. Visit UIPath for installation instruc
 Clone the Repository:
 
 Clone this repository to your local machine using Git.
-bash
-Copy code
-git clone https://github.com/your-username/uipath-data-scraping-bot.git
 
 #### Configure Settings:
 
