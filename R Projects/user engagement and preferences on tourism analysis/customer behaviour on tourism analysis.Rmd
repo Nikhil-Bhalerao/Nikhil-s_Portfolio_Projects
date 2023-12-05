@@ -1,0 +1,305 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r}
+#Installing & Loading all needed packages
+# install.packages("tidyverse")
+# install.packages("corrplot")
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(corrplot)
+
+```
+
+Loading dataset
+
+Top 5 data rows
+
+```{r}
+
+df <- read_csv("Customer behaviour Tourism.csv")
+head(df, 5)
+```
+
+
+Bottom 5 data rows
+
+```{r}
+tail(df, 5)
+```
+
+
+Checking structure of the dataset, data types of all the columns
+
+```{r}
+# checking structure of dataset
+glimpse(df)
+```
+
+
+Checking dataset for duplicate values
+
+```{r}
+sum(duplicated(df))
+```
+
+
+
+checking dataset for null values
+
+```{r}
+
+null_values <- df %>% map(~sum(is.na(.)))
+null_values
+```
+
+Find average or most common values from columns to replace NA with that values from each column that have NA values
+
+```{r}
+
+# Find average value
+avg_yavotp <- round(mean(df$Yearly_avg_view_on_travel_page, na.rm = TRUE))
+
+# Find the most common value in the 'preferred_device' column
+most_common_device <- names(which.max(table(df$preferred_device)))
+
+# Find average value of likes
+avg_like_given <-  round(mean(df$total_likes_on_outstation_checkin_given, na.rm = TRUE))
+
+# Find average yearly outstation check in
+avg_check_in <-  round(mean(df$yearly_avg_Outstation_checkins, na.rm = TRUE))
+
+# Find most column value in the 'preferred_location_type' column
+most_common_location <- names(which.max(table(df$preferred_location_type)))
+
+# Find average yearly comment on page
+avg_comment <-  round(mean(df$Yearly_avg_comment_on_travel_page, na.rm = TRUE))
+
+# Most common value in the 'following_company_page'
+most_common_ans <- names(which.max(table(df$following_company_page)))
+
+# Most common adult flag
+most_common_adult_flag <- names(which.max(table(df$Adult_flag)))
+
+# Find average of daily spending on traveling page
+avg_time_spend_page <- round(mean(df$Daily_Avg_mins_spend_on_traveling_page, na.rm = TRUE))
+
+
+df <- df %>% replace_na(list(Yearly_avg_view_on_travel_page = avg_yavotp, preferred_device = most_common_device, total_likes_on_outstation_checkin_given = avg_like_given, yearly_avg_Outstation_checkins = avg_check_in, preferred_location_type = most_common_location, Yearly_avg_comment_on_travel_page = avg_comment, following_company_page = most_common_ans, Adult_flag = as.integer(most_common_adult_flag), Daily_Avg_mins_spend_on_traveling_page = avg_time_spend_page))
+
+null_values2 <- df %>% map(~sum(is.na(.)))
+null_values2
+```
+
+
+Checking specific columns for unique values
+
+Before fixing - unique values
+
+```{r}
+
+
+unique(df$Taken_product)
+
+unique(df$preferred_device)
+
+unique(df$member_in_family)
+
+unique(df$preferred_location_type)
+
+unique(df$following_company_page)
+
+unique(df$working_flag)
+
+unique(df$travelling_network_rating)
+
+unique(df$Adult_flag)
+```
+
+
+Setting values from preferred device column in categories
+
+```{r}
+
+# Create a new column 'device_category' based on mapping
+
+temp_preferred_device <- df %>% mutate(device_category = case_when(preferred_device %in% c('iOS and Android', 'iOS', 'ANDROID', 'Android', 'Android OS', 'Other', 'Others', 'Tab') ~ 'Mobile', TRUE ~ preferred_device))
+
+df <- df %>%  mutate(device_category = temp_preferred_device$device_category)
+```
+
+
+Fixing Values from columns
+
+```{r}
+
+# replacing "Three" with "3" and converting whole column to numeric data type from character data type - 'member_in_family' column
+
+temp_member_in_family <- df %>% mutate(member_in_family = ifelse(member_in_family == "Three", "3", member_in_family))
+
+df <- df %>% mutate(member_in_family = temp_member_in_family$member_in_family)
+
+temp_member_in_family_fixed <- df %>% select(member_in_family) %>% mutate_if(is.character, as.numeric)
+
+df <- df %>% mutate(member_in_family = temp_member_in_family_fixed$member_in_family)
+
+# replacing "Yeso", "1", "0" to "Yes" or "No" based on the values - 'following_company_page' column
+
+df <- df %>% mutate(following_company_page = case_when(following_company_page %in% c("Yeso", "1") ~ "Yes", following_company_page %in% c("0") ~ "No", TRUE ~ following_company_page))
+
+
+# replacing "0" with "No" - 'working_flag' column
+
+df <- df %>% mutate(working_flag = case_when(working_flag %in% c("0") ~ "No", TRUE ~ working_flag))
+
+df <- df %>% mutate(travelling_network_rating = case_when(travelling_network_rating %in% c(10) ~ 5, TRUE ~ travelling_network_rating))
+
+df
+```
+
+
+After fixing - unique values
+
+```{r}
+
+unique(df$Taken_product)
+
+unique(df$preferred_device)
+
+unique(df$member_in_family)
+
+unique(df$preferred_location_type)
+
+unique(df$following_company_page)
+
+unique(df$working_flag)
+
+unique(df$travelling_network_rating)
+
+unique(df$Adult_flag)
+```
+
+
+# Report
+
+
+##### Identify and list unique values in the 'Taken_product' and 'preferred_location_type' columns.
+
+```{r}
+unique(df$Taken_product)
+
+unique(df$preferred_location_type)
+```
+
+##### Distribution of 'Taken_product'
+
+```{r}
+ggplot(data= df, aes(x= Taken_product, fill = Taken_product)) + geom_bar() + labs(title = "Distribution of Taken_product")
+```
+
+
+##### What is the distribution of preferred devices among users? Is there a dominant device type?
+
+```{r}
+ggplot(data = df, aes(x = device_category, fill = device_category)) +
+  geom_histogram(binwidth = 1, color = "black", alpha = 0.7, stat = "count") + labs(title = "Distribution of preferred devices")
+```
+
+
+##### Investigate the distribution of preferred location types. Are there specific location types that users prefer more than others?
+
+```{r}
+summary_preferred_location_type <- df %>% group_by(location_type = preferred_location_type) %>% summarise(count = n())
+summary_preferred_location_type <- summary_preferred_location_type %>% arrange(desc(count))
+
+ggplot(data = summary_preferred_location_type, aes(y = location_type, x= count)) +
+  geom_col(fill = "green", color = "black") + labs(title = "Distribution of preferred location types")
+```
+
+
+##### Explore the distribution of the number of family members traveling with users.
+
+```{r}
+ggplot(data = df, aes(x = member_in_family)) +
+  geom_histogram(binwidth = 1, fill = "yellow", color = "black", alpha = 0.7, stat = "count")
+```
+
+
+##### Investigate user engagement trends based on the weeks since the last outstation check-in. Are there specific weeks when users are more active?
+
+```{r}
+ggplot(data = df, aes(x = week_since_last_outstation_checkin)) +
+  geom_histogram(binwidth = 1, fill = "brown", color = "black",  alpha = 0.7, stat = "count") + labs(title = "Week the users are most active")
+```
+
+
+##### Create a scatter plot to visualize the relationship between the number of likes given and received on outstation check-ins.
+
+```{r}
+ggplot(data = df, aes(x= total_likes_on_outstation_checkin_given, y= total_likes_on_outofstation_checkin_received)) + geom_point() + labs(title = "Total likes on outstation checkin given vs Total likes on outofstation checkin received")
+```
+
+
+##### What is the distribution of 'travelling_network_rating'? Are most users satisfied with their traveling network?
+
+```{r}
+summary_travelling_network_rating <- df %>% group_by(travelling_network_ratings = travelling_network_rating) %>% summarise(rating_count = n(), .groups = "drop")
+summary_travelling_network_rating$fac_tnr <- factor(summary_travelling_network_rating$travelling_network_ratings)
+
+summary_travelling_network_rating
+
+ggplot(data = summary_travelling_network_rating, aes(x= fac_tnr, y= rating_count)) + geom_col(fill = "purple", color = "black") + labs(x= "travelling_network_rating", title = "Distribution of travelling_network_rating")
+
+```
+
+
+##### Explore the distribution of 'Adult_flag.'
+
+```{r}
+ggplot(data = df, aes(x= Adult_flag, fill = factor(Adult_flag))) + geom_bar() + labs(title = "Distribution Of Adult Flag")
+
+```
+
+
+##### How is the daily average minutes spending distributed among users? Are there any significant outliers?
+
+```{r}
+ggplot(df, aes(x = "", y = Daily_Avg_mins_spend_on_traveling_page)) +
+  geom_boxplot(fill = "orange", color = "black") +
+  labs(title = "Distribution of Daily Average Minutes Spending",
+       x = "",
+       y = "Daily Average Minutes Spending")
+```
+
+
+##### Explore the distribution of 'following_company_page.'
+
+```{r}
+fcp_count <- df %>% count(following_company_page)
+
+ggplot(fcp_count, aes(x = "", y= n, fill = factor(following_company_page))) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  labs(title = "Distribution of following_company_page",
+       fill = "following_company_page") +
+  theme_minimal()
+```
+
+##### Correlation Matrix
+
+```{r fig.height=10, fig.width=15}
+corr <- df %>% select_if(is.numeric)
+
+correlation_matrix <- cor(corr)
+
+library(corrplot)
+
+corrplot(correlation_matrix, method = "color", col = colorRampPalette(c("blue", "white", "brown"))(50), 
+         tl.col = "black")
+```
+
