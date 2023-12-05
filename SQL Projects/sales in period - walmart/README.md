@@ -1,6 +1,6 @@
 # Walmart Sales and Inventory Management Analysis
 ## Objectives
-The Inventory Management and Sales Analysis project aimed to optimize inventory levels, understand product performance, and evaluate sales trends. The key objectives were to:
+The Inventory Management and Sales Analysis project aimed to optimize inventory levels, understand product performance and evaluate sales trends. The key objectives were to:
 
 Optimize Inventory Levels: Avoid stockouts and overstock situations by analyzing current inventory quantities and identifying low-stock products.
 
