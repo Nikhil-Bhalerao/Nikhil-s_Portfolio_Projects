@@ -6,27 +6,27 @@ In this project, we aim to create a command-line chat interface that utilizes th
 
 ## Key Features:
 
-### Natural Language Understanding (NLU): Leverage the Google Palm API's NLU capabilities to enhance the chatbot's understanding of user inputs and generate intelligent responses.
+Natural Language Understanding (NLU): Leverage the Google Palm API's NLU capabilities to enhance the chatbot's understanding of user inputs and generate intelligent responses.
 
-### Multi-Turn Conversations: Implement support for multi-turn conversations within the command-line interface, allowing users to have more extended and meaningful interactions.
+Multi-Turn Conversations: Implement support for multi-turn conversations within the command-line interface, allowing users to have more extended and meaningful interactions.
 
-### Intent Recognition: Utilize the API's intent recognition features to accurately identify user intentions, providing relevant responses based on the context of the conversation.
+Intent Recognition: Utilize the API's intent recognition features to accurately identify user intentions, providing relevant responses based on the context of the conversation.
 
-### Conversational Flow: Optimize the flow of conversations by tracking and maintaining context across messages, ensuring coherent and context-aware responses.
+Conversational Flow: Optimize the flow of conversations by tracking and maintaining context across messages, ensuring coherent and context-aware responses.
 
 ## Technologies Used:
 
-### Google Palm API: The primary technology for natural language understanding and conversational intelligence.
+Google Palm API: The primary technology for natural language understanding and conversational intelligence.
 
-### Python: Utilize Python for backend logic, API integration, and command-line interface development.
+Python: Utilize Python for backend logic, API integration, and command-line interface development.
 
 ## Project Goals:
 
-### Simplified User Interaction: Develop a straightforward command-line interface that allows users to engage in conversations effortlessly.
+Simplified User Interaction: Develop a straightforward command-line interface that allows users to engage in conversations effortlessly.
 
-### Dynamic Conversations: Leverage the Google Palm API to make conversations dynamic, contextually aware, and responsive.
+Dynamic Conversations: Leverage the Google Palm API to make conversations dynamic, contextually aware, and responsive.
 
-### User-Friendly Commands: Implement user-friendly commands for initiating, continuing, and concluding conversations within the command-line interface.
+User-Friendly Commands: Implement user-friendly commands for initiating, continuing, and concluding conversations within the command-line interface.
 
 ## Outcome:
 
