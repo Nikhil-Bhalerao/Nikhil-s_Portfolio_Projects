@@ -2,6 +2,7 @@ import google.generativeai as palm
 import base64
 import json
 import pprint
+import time
 import apikey
 
 # Configure the client library by providing your API key.
@@ -22,21 +23,33 @@ defaults = {
   'top_p': top_p,
 }
 
-messages_b64 = str(input("Enter Prompt: "))
+print("enter q to quit the program")
 
-messages = str(messages_b64)
+while True:
+  print("\n")
+  messages_b64 = str(input("Enter Prompt: "))
 
-# Show what will be sent with the API call.
-pprint.pprint({'messages': messages})
+  if messages_b64.lower() != "q":
+    messages = str(messages_b64)
+    
+    # Show what will be sent with the API call.
+    pprint.pprint(messages)
+    print("\n")
+    # Call the model and print the response.
+    response = palm.chat(
+      **defaults,
+      messages=messages
+    )
 
-# Call the model and print the response.
-response = palm.chat(
-  **defaults,
-  messages=messages
-)
-
-try:
-  print(response.candidates[0]["content"])
-except Exception as e:
-  print("No Text Was Genrated", e)
-  
+    try:
+      print(response.candidates[0]["content"])
+    except Exception as e:
+      print("No Text Was Genrated", e)
+      continue
+    
+  elif messages_b64.lower() == "q":
+    print("Thanks For Using")
+    time.sleep(3)
+    break
+    quit()
+    
