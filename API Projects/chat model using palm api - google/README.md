@@ -31,3 +31,9 @@ User-Friendly Commands: Implement user-friendly commands for initiating, continu
 ## Outcome:
 
 The outcome of this project will be a functional command-line chat interface that showcases the power of the Google Palm API in a simplified environment. Users can experience intelligent and context-aware conversations through basic command-line interactions, providing a glimpse into the capabilities of advanced natural language processing in a minimalistic setting.
+
+## How To Use
+
+1. Download the file
+2. Get your API key from https://developers.generativeai.google/
+3. Edit the downloaded file and enter your API key
